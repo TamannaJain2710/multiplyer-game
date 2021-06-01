@@ -48,6 +48,7 @@ textSize(30)
 text("Game Start",120,100)
 
 Player.getPlayerInfo()
+player.getFinishedPlayers();
 if(allPlayers !==undefined){
 
     background(rgb(198,135,103));
@@ -65,31 +66,72 @@ console.log(plr);
 console.log(index) ;
 cars[index-1].x= x;
 cars[index-1].y= y;
+
+
 if(index === player.index)
 {
+fill("red");
+ellipse(x,y,60,60);
 cars[index-1].shapeColor="red";
 camera.position.x = displayWidth/2;
 camera.position.y = cars[index-1].y;
+}
+
+textAlign(CENTER)
+textSize(20)
+text(allPlayers[plr].name, cars[index-1].x,cars[index-1].y+75);
 }
 }
 //display_position +=20
 //textSize(15)
 //text(allPlayers[plr].name + ": " +  allPlayers[plr].distance, 120, display_position)
 
-}
 
-if(keyIsDown(UP_ARROW) && player.index !==null){
-player.distance +=50
-player.update()
+
+if(keyIsDown(UP_ARROW) && player.index !==null && passedFinish !== true){
+player.distance +=10
+player.update();
+
     }
-    console.log(player.distance)
-drawSprites();
-if (player.distance >= 3860){
-    gameState = 2;
-}
-}
-    end(){
-    console.log("game ended");
+   
+
+if (player.distance >= 3680 && passedFinish == false){
+   Player.updateFinishedPlayers()
+   player.rank = finishedPlayers
+   player.update()
+    passedFinish = true
     
 }
+drawSprites();
 }
+
+displayRanks(){
+camera.position.x = 0
+camera.position.y = 0
+
+imageMode(CENTER);
+Player.getPlayerInfo();
+    image(bronzeImg, displayWidth/-4, -100 + displayHeight/9, 200, 240);
+    image(silverImg, displayWidth/4, -100 + displayHeight/10, 225, 270);
+    image(goldImg, 0, -100, 250, 300);
+
+    textAlign(CENTER);
+    textSize(50);
+    for(var plr in allPlayers){
+        if(allPlayers[plr].rank === 1){
+          text("1st :  "+allPlayers[plr].name,0,85);
+        }
+        else if(allPlayers[plr].rank === 2){
+          text("2nd: " + allPlayers[plr].name, displayWidth/4, displayHeight/9 + 73);
+        }else if(allPlayers[plr].rank === 3){
+          text("3rd: " + allPlayers[plr].name, displayWidth/-4, displayHeight/10 + 76);
+      }else{
+          textSize(30);
+          text("Honorable Mention: " + allPlayers[plr].name, 0, 225);
+      }
+      }
+
+
+}
+}
+   
