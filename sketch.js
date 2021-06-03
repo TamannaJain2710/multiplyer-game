@@ -33,7 +33,7 @@ function setup(){
 
 function draw(){
     background(200, 200, 255);
-   if(playerCount === 4){
+   if(playerCount === 2){
 
     game.updateState(1);
 
@@ -42,10 +42,10 @@ if(gameState === 1){
     clear();
     game.play();
 } 
-if(finishedPlayers === 4){
+if(finishedPlayers === 2){
     game.updateState(2)
 }
-if(gameState === 2 && finishedPlayers === 4){
+if(gameState === 2 && finishedPlayers === 2){
     game.displayRanks()
 }
    

@@ -34,10 +34,10 @@ class Game{
         c1.addImage(c1Img);
         c2= createSprite(500,200);
         c2.addImage(c2Img)
-        c3= createSprite(700,200);
+        /*c3= createSprite(700,200);
         c3.addImage(c3Img)
         c4= createSprite(900,200);
-        c4.addImage(c4Img)
+        c4.addImage(c4Img)*/
         cars= [c1,c2,c3,c4];
     }
 
@@ -111,8 +111,8 @@ camera.position.y = 0
 
 imageMode(CENTER);
 Player.getPlayerInfo();
-    image(bronzeImg, displayWidth/-4, -100 + displayHeight/9, 200, 240);
-    image(silverImg, displayWidth/4, -100 + displayHeight/10, 225, 270);
+    /*image(bronzeImg, displayWidth/-4, -100 + displayHeight/9, 200, 240);
+    image(silverImg, displayWidth/4, -100 + displayHeight/10, 225, 270);*/
     image(goldImg, 0, -100, 250, 300);
 
     textAlign(CENTER);
@@ -121,11 +121,11 @@ Player.getPlayerInfo();
         if(allPlayers[plr].rank === 1){
           text("1st :  "+allPlayers[plr].name,0,85);
         }
-        else if(allPlayers[plr].rank === 2){
+        /*else if(allPlayers[plr].rank === 2){
           text("2nd: " + allPlayers[plr].name, displayWidth/4, displayHeight/9 + 73);
         }else if(allPlayers[plr].rank === 3){
           text("3rd: " + allPlayers[plr].name, displayWidth/-4, displayHeight/10 + 76);
-      }else{
+      }*/else{
           textSize(30);
           text("Honorable Mention: " + allPlayers[plr].name, 0, 225);
       }
